@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PIDEditor : MonoBehaviour {
     [SerializeField]
-    Horizontal controllerSource;
+    Controller controllerSource;
     [SerializeField]
     InputField proportionalInput;
     [SerializeField]

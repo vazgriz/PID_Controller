@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalButton : MonoBehaviour {
+public class TargetButton : MonoBehaviour {
     [SerializeField]
-    Horizontal controller;
+    Controller controller;
     [SerializeField]
     int value;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Horizontal : Controller {
+public class Vertical : Controller {
     [SerializeField]
     PIDController controller;
     [SerializeField]
@@ -10,9 +10,7 @@ public class Horizontal : Controller {
     [SerializeField]
     Transform[] targets;
     [SerializeField]
-    GameObject flameRight;
-    [SerializeField]
-    GameObject flameLeft;
+    GameObject flame;
     [SerializeField]
     float flameSize;
 
@@ -27,6 +25,8 @@ public class Horizontal : Controller {
         foreach (var target in targets) {
             targetPositions.Add(target.position);
         }
+
+        SetTarget(0);
     }
 
     public override PIDController GetController() {
@@ -49,10 +49,9 @@ public class Horizontal : Controller {
     }
 
     void FixedUpdate() {
-        float throttle = controller.Update(Time.fixedDeltaTime, rigidbody.position.x, targetPosition.x);
-        rigidbody.AddForce(new Vector3(throttle * power, 0, 0));
+        float throttle = controller.Update(Time.fixedDeltaTime, rigidbody.position.y, targetPosition.y);
+        rigidbody.AddForce(new Vector3(0, throttle * power, 0));
 
-        SetScale(flameRight, -throttle);
-        SetScale(flameLeft, throttle);
+        SetScale(flame, throttle);
     }
 }
