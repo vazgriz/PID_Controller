@@ -22,18 +22,21 @@ public class PIDController {
     public float valueLast;
     public float errorLast;
     public float integrationStored;
-    public float velocity;
+    public float velocity;  //only used for the info display
 
     public float Update(float dt, float currentValue, float targetValue) {
         if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
 
         float error = targetValue - currentValue;
 
+        //calculate P term
         float P = proportionalGain * error;
 
+        //calculate I term
         integrationStored = Mathf.Clamp(integrationStored + (error * dt), -integralSaturation, integralSaturation);
         float I = integralGain * integrationStored;
 
+        //calculate both D terms
         float errorRateOfChange = (error - errorLast) / dt;
         errorLast = error;
 
@@ -41,6 +44,7 @@ public class PIDController {
         valueLast = currentValue;
         velocity = valueRateOfChange;
 
+        //choose D term to use
         float deriveMeasure;
         if (derivativeMeasurement == DerivativeMeasurement.Measurement) {
             deriveMeasure = -valueRateOfChange;
