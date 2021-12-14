@@ -10,9 +10,9 @@ public class PIDController {
     }
 
     //PID coefficients
-    public float proportional;
-    public float integral;
-    public float derivative;
+    public float proportionalGain;
+    public float integralGain;
+    public float derivativeGain;
 
     public float outputMin = -1;
     public float outputMax = 1;
@@ -29,10 +29,10 @@ public class PIDController {
 
         float error = targetValue - currentValue;
 
-        float P = proportional * error;
+        float P = proportionalGain * error;
 
         integrationStored = Mathf.Clamp(integrationStored + (error * dt), -integralSaturation, integralSaturation);
-        float I = integral * integrationStored;
+        float I = integralGain * integrationStored;
 
         float errorRateOfChange = (error - errorLast) / dt;
         errorLast = error;
@@ -48,7 +48,7 @@ public class PIDController {
             deriveMeasure = errorRateOfChange;
         }
 
-        float D = derivative * deriveMeasure;
+        float D = derivativeGain * deriveMeasure;
 
         float result = P + I + D;
 

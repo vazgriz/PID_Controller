@@ -28,9 +28,9 @@ public class PIDEditor : MonoBehaviour {
     void Start() {
         controller = controllerSource.GetController();
 
-        UpdateInput(proportionalInput, controller.proportional);
-        UpdateInput(integralInput, controller.integral);
-        UpdateInput(derivativeInput, controller.derivative);
+        UpdateInput(proportionalInput, controller.proportionalGain);
+        UpdateInput(integralInput, controller.integralGain);
+        UpdateInput(derivativeInput, controller.derivativeGain);
         UpdateInput(integralSaturationInput, controller.integralSaturation);
     }
 
@@ -46,21 +46,21 @@ public class PIDEditor : MonoBehaviour {
     public void UpdateProportional(string text) {
         if (TryParse(text, out float value)) {
             proportionalInput.text = text;
-            controller.proportional = value;
+            controller.proportionalGain = value;
         }
     }
 
     public void UpdateIntegral(string text) {
         if (TryParse(text, out float value)) {
             integralInput.text = text;
-            controller.integral = value;
+            controller.integralGain = value;
         }
     }
 
     public void UpdateDerivative(string text) {
         if (TryParse(text, out float value)) {
             derivativeInput.text = text;
-            controller.derivative = value;
+            controller.derivativeGain = value;
         }
     }
 
