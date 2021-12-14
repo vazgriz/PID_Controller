@@ -18,6 +18,15 @@ public class Vertical : Controller {
     List<Vector3> targetPositions;
     Vector3 targetPosition;
 
+    public override float Power {
+        get {
+            return power;
+        }
+        set {
+            power = value;
+        }
+    }
+
     void Start() {
         rigidbody = GetComponent<Rigidbody>();
 

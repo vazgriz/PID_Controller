@@ -374,9 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-    proportional: 1
-    integral: 0
-    derivative: 0
+    proportionalGain: 0
+    integralGain: 0
+    derivativeGain: 0
     outputMin: 0
     outputMax: 1
     integralSaturation: 0
@@ -2125,14 +2125,6 @@ PrefabInstance:
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3229677839574780069, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229677839574780069, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 225
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229677839574780069, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
@@ -2277,6 +2269,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3229677840387256078, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721318167387127405, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721318167387127405, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721318167387127405, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721318167387127405, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721318167387127405, guid: bcf8a4518b18ca64ab3313544ddc012e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}

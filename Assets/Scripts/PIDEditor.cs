@@ -15,6 +15,8 @@ public class PIDEditor : MonoBehaviour {
     [SerializeField]
     InputField integralSaturationInput;
     [SerializeField]
+    InputField powerInput;
+    [SerializeField]
     Text valueText;
     [SerializeField]
     Text errorText;
@@ -32,6 +34,7 @@ public class PIDEditor : MonoBehaviour {
         UpdateInput(integralInput, controller.integralGain);
         UpdateInput(derivativeInput, controller.derivativeGain);
         UpdateInput(integralSaturationInput, controller.integralSaturation);
+        UpdateInput(powerInput, controllerSource.Power);
     }
 
     bool TryParse(string text, out float value) {
@@ -68,6 +71,13 @@ public class PIDEditor : MonoBehaviour {
         if (TryParse(text, out float value)) {
             integralSaturationInput.text = text;
             controller.integralSaturation = value;
+        }
+    }
+
+    public void UpdatePower(string text) {
+        if (TryParse(text, out float value)) {
+            powerInput.text = text;
+            controllerSource.Power = value;
         }
     }
 
