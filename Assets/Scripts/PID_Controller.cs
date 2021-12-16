@@ -5,8 +5,8 @@ using UnityEngine;
 [Serializable]
 public class PIDController {
     public enum DerivativeMeasurement {
-        Measurement,
-        Error
+        Velocity,
+        ErrorRateOfChange
     }
 
     //PID coefficients
@@ -46,7 +46,7 @@ public class PIDController {
 
         //choose D term to use
         float deriveMeasure;
-        if (derivativeMeasurement == DerivativeMeasurement.Measurement) {
+        if (derivativeMeasurement == DerivativeMeasurement.Velocity) {
             deriveMeasure = -valueRateOfChange;
         } else {
             deriveMeasure = errorRateOfChange;
