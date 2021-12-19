@@ -58,4 +58,12 @@ public class PIDController {
 
         return Mathf.Clamp(result, outputMin, outputMax);
     }
+
+    public float UpdateAngle(float dt, float currentAngle, float targetAngle) {
+        if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
+        float error = (targetAngle - currentAngle + 540) % 360 - 180;   //calculate new target value, accounting for modular arithmetic
+        float newTargetAngle = currentAngle + error;
+
+        return Update(dt, currentAngle, newTargetAngle);
+    }
 }
