@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Horizontal.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Vertical.unity
+    guid: 97d143e7c4f917d42b8798e33c0bfdd1
+  - enabled: 1
+    path: Assets/Scenes/Turret.unity
+    guid: e26b369ef06fdbc45bb3c51e4efd0e80
   m_configObjects: {}
