@@ -59,11 +59,28 @@ public class PIDController {
         return Mathf.Clamp(result, outputMin, outputMax);
     }
 
-    public float UpdateAngle(float dt, float currentAngle, float targetAngle) {
+    public float UpdateAngle(float dt, float currentAngle, float targetAngle, float deriveMeasure) {
         if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
-        float error = (targetAngle - currentAngle + 540) % 360 - 180;   //calculate new target value, accounting for modular arithmetic
-        float newTargetAngle = currentAngle + error;
+        float error = (targetAngle - currentAngle + 540) % 360 - 180;   //calculate relative error, and remap to [-180, 180]
+        errorLast = error;
 
-        return Update(dt, currentAngle, newTargetAngle);
+        //calculate P term
+        float P = proportionalGain * error;
+
+        //calculate I term
+        integrationStored = Mathf.Clamp(integrationStored + (error * dt), -integralSaturation, integralSaturation);
+        float I = integralGain * integrationStored;
+
+        //calculate D term
+        if (derivativeMeasurement == DerivativeMeasurement.Velocity) {
+            deriveMeasure *= -1;
+            velocity = deriveMeasure;
+        }
+
+        float D = derivativeGain * deriveMeasure;
+
+        float result = P + I + D;
+
+        return Mathf.Clamp(result, outputMin, outputMax);
     }
 }
