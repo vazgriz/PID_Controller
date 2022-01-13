@@ -23,6 +23,11 @@ public class PIDController {
     public float errorLast;
     public float integrationStored;
     public float velocity;  //only used for the info display
+    public bool derivativeInitialized;
+
+    public void Reset() {
+        derivativeInitialized = false;
+    }
 
     public float Update(float dt, float currentValue, float targetValue) {
         if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
@@ -45,11 +50,16 @@ public class PIDController {
         velocity = valueRateOfChange;
 
         //choose D term to use
-        float deriveMeasure;
-        if (derivativeMeasurement == DerivativeMeasurement.Velocity) {
-            deriveMeasure = -valueRateOfChange;
+        float deriveMeasure = 0;
+
+        if (derivativeInitialized) {
+            if (derivativeMeasurement == DerivativeMeasurement.Velocity) {
+                deriveMeasure = -valueRateOfChange;
+            } else {
+                deriveMeasure = errorRateOfChange;
+            }
         } else {
-            deriveMeasure = errorRateOfChange;
+            derivativeInitialized = true;
         }
 
         float D = derivativeGain * deriveMeasure;
