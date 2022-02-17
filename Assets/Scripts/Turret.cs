@@ -40,9 +40,8 @@ public class Turret : Controller {
 
         var currentAngle = Vector3.SignedAngle(Vector3.forward, forwardDir, Vector3.up);
         var targetAngle = Vector3.SignedAngle(Vector3.forward, targetDir, Vector3.up);
-        var velocity = rigidbody.angularVelocity.y * Mathf.Rad2Deg;
 
-        float input = controller.UpdateAngle(Time.fixedDeltaTime, currentAngle, targetAngle, velocity);
+        float input = controller.UpdateAngle(Time.fixedDeltaTime, currentAngle, targetAngle);
         rigidbody.AddTorque(new Vector3(0, input * power, 0));
     }
 }
