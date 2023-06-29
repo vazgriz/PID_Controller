@@ -76,7 +76,6 @@ public class PIDController {
     public float UpdateAngle(float dt, float currentAngle, float targetAngle) {
         if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
         float error = AngleDifference(targetAngle, currentAngle);
-        errorLast = error;
 
         //calculate P term
         float P = proportionalGain * error;
